@@ -1,0 +1,250 @@
+//Variables
+
+//colores
+@import "colores.scss";
+
+//text color
+@import "text-colors.scss";
+
+//pseudoclases
+@import "pseudoclases.scss";
+
+//gradientes
+@import "gradients.scss";
+
+//reset css
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: $background-color;
+  margin: 0;
+  padding: 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+}
+
+h1 {
+  font-size: 32px;
+  color: #333;
+}
+
+h2 {
+  font-size: 24px;
+  color: $secondary-color;
+}
+.container {
+    h2 {
+        font-size: 40px;
+    }
+}
+
+p {
+  font-size: 16px;
+  color: $text-color;
+  line-height: 1.5;
+}
+
+img.img-index {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 100px;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  p{
+    color: $secondary-text-color;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* cards */
+.cards-container {
+  display: grid;
+  grid-template-areas: 
+    "div div"
+    "div div";
+  
+  .card {
+    margin: 10px;
+    padding: 10px;
+
+    &:hover {
+      border-color: $card-hover-color;
+      border-radius: 10px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Fondo */
+body {
+  background-image: linear-gradient(to bottom, $gradient-start-color, $gradient-end-color);
+}
+
+.container {
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px $box-shadow-color;
+}
+
+/* Estilos responsive */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}
+
+// condicionales
+
+$font-size-desktop: 16px;
+// Tamanio de fuente para dispositivos de escritorio
+ 
+$font-size-mobile: 14px;
+// Tamanio de fuente para dispositivos moviles
+
+ $use-desktop-font-size: true;
+
+ @mixin font-size() {
+    @if $use-desktop-font-size {
+      font-size: $font-size-desktop;
+    } @else {
+      font-size: $font-size-mobile;
+    }
+  }
+  
+  body {
+    @include font-size(); 
+}
+
+
+// extend
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0d6efd;
+    color: white;
+  }
+  
+//Estilo para el boton de enviar
+  .btn-primary {
+    @extend .button; 
+  }
+
+
+// animaciones
+
+.img-index {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.img-index:hover {
+    transform: scale(1.1);
+}
+
+// cards
+@keyframes cardAnimation {
+    0% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .card {
+    animation: cardAnimation 0.5s ease-in-out;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  h2 {
+    animation: fade-in 0.5s ease-in-out;
+  }
+
+  @keyframes rotate-in {
+    0% {
+      transform: rotateX(90deg);
+      opacity: 0;
+    }
+    100% {
+      transform: rotateX(0);
+      opacity: 1;
+    }
+  }
+  
+  h1 {
+    animation: rotate-in 0.8s ease-in-out;
+  }
